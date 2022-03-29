@@ -7,7 +7,7 @@ import Header from '../header'
 import SeatSelectionMain from './seat-selection-main'
 import Footer from '../footer'
 
-export default function SeatSelection({ purchaseData, setPurchaseData }) {
+export default function SeatSelection({ purchaseDataState }) {
     const { idSessao } = useParams();
     const seatSelectionDataURL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`;
     
@@ -30,11 +30,12 @@ export default function SeatSelection({ purchaseData, setPurchaseData }) {
         weekday: seatSelectionData.day.weekday
     }
 
+
     return (
         <>
             <Topbar />
             <Header text='Selecione o(s) assento(s)'/>
-            <SeatSelectionMain {...seatSelectionData} {...{purchaseData, setPurchaseData}}/>
+            <SeatSelectionMain {...{seatSelectionData, purchaseDataState}}/>
             <Footer {...footerData}/>
         </>
     )

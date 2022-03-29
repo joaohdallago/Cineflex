@@ -1,16 +1,28 @@
 import styled from "styled-components"
 
-export default function TextInputs() {
+export default function TextInputs({ customerDataState }) {
+    const [customerData, setCustomerData] = customerDataState;
+
     return (
         <Container>
             <div>
                 <span>Nome do comprador:</span>
-                <input type="text" placeholder="Digite seu nome..."/>
+                <input
+                    type="text"
+                    placeholder="Digite seu nome..."
+                    onChange={e => setCustomerData({...customerData, name: e.target.value})}
+                    value={customerData.name}
+                />
             </div>
 
             <div>
                 <span>CPF do comprador:</span>
-                <input type="text" placeholder="Digite seu CPF..."/>
+                <input
+                    type="text"
+                    placeholder="Digite seu CPF..."
+                    onChange={e => setCustomerData({...customerData, cpf: e.target.value})}
+                    value={customerData.cpf}
+                />
             </div>
             
         </Container>

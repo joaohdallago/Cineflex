@@ -4,12 +4,11 @@ import styled from 'styled-components'
 import Seat from "./seat"
 import SeatsSubtitles from './seats-subtitles';
 
-export default function Seats({seats, purchaseData, setPurchaseData}) {
-    const [selectedIds, setSelectedIds] = useState([])
+export default function Seats({ seats, selectedIdsState}) {
 
     return (
         <Container>
-            {seats.map(seatData => <Seat {...seatData} {...{selectedIds, setSelectedIds}}/>)}
+            {seats.map(seatData => <Seat {...seatData} {...{selectedIdsState}}/>)}
             <SeatsSubtitles />
         </Container>
     )

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export default function Seat({ id, name, isAvailable, selectedIds, setSelectedIds}) { 
+export default function Seat({ id, name, isAvailable, selectedIdsState}) { 
+    const [selectedIds, setSelectedIds] = selectedIdsState;
     const isSelected = selectedIds.includes(id)
     
     return (

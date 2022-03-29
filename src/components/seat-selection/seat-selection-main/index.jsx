@@ -1,15 +1,32 @@
 import styled from 'styled-components'
+import { useState } from 'react';
 
 import Seats from "./seats"
 import TextInputs from './text-inputs';
 import BookSeatButton from './book-seat-button';
 
-export default function SeatSelectionMain({ seats, purchaseData, setPurchaseData }) {
+export default function SeatSelectionMain({ seatSelectionData, purchaseDataState }) {
+    const selectedIdsState = useState([])
+    const customerDataState = useState({
+        name: '',
+        cpf:''
+    })
+
+    const [ selectedIds ] = selectedIdsState;
+    const [ customerData ] = customerDataState;
+
+    const { seats } = seatSelectionData;
+
+    const bookSeatData = {
+        ids: selectedIds,
+        ...customerData
+    }
+
     return (
         <Container>
-            <Seats {...{seats, purchaseData, setPurchaseData}}/>
-            <TextInputs />
-            <BookSeatButton />
+            <Seats {...{seats, selectedIdsState}}/>
+            <TextInputs {...{customerDataState}}/>
+            <BookSeatButton {...{bookSeatData, seatSelectionData, purchaseDataState}}/>
         </Container>
     )
 }

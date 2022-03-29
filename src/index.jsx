@@ -9,9 +9,8 @@ import SeatSelection from './components/seat-selection'
 import Success from './components/success'
 
 function App() {
-    const [purchaseData, setPurchaseData] = useState({
-        ids: []
-    })
+    const purchaseDataState = useState({})
+
  
     return (
         <>
@@ -20,8 +19,8 @@ function App() {
                 <Routes>
                     <Route path='/' element={<MovieSelection/>}/>
                     <Route path='/sessoes/:idFilme' element={<SessionSelection/>}/>
-                    <Route path='assentos/:idSessao' element={<SeatSelection {...{purchaseData, setPurchaseData}}/>}/>
-                    <Route path='sucesso' element={<Success {...purchaseData}/>}/>
+                    <Route path='assentos/:idSessao' element={<SeatSelection {...{purchaseDataState}}/>}/>
+                    <Route path='sucesso' element={<Success />}/>
                 </Routes>
             </BrowserRouter>
         </>
