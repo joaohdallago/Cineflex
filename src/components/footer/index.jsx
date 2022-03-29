@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function Footer({movieData}) {
+export default function Footer({movieData, weekday}) {
     const { posterURL, title} = movieData;
 
     return (
@@ -11,6 +11,7 @@ export default function Footer({movieData}) {
 
             <TextContainer>
                 <span>{title}</span>
+                <span>{weekday && weekday}</span>
             </TextContainer>
         </Container>
     )
@@ -54,6 +55,9 @@ const ImgContainer = styled.div`
 `;
 
 const TextContainer = styled.div `
+    display: flex;
+    flex-direction: column;
+
     font-size: 26px;
 
     color: #293845;
