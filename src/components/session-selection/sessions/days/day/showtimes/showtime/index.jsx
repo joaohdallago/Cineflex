@@ -1,12 +1,15 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default function Showtime({ showtimeData }) {
-    const { name } = showtimeData;
+    const { id, name } = showtimeData;
     
     return (
-        <Container>
-            {name}
-        </Container>
+        <Link to={'/assentos/' + id}>
+            <Container>
+                {name}
+            </Container>
+        </Link>
     )
 }
 
