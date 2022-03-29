@@ -4,16 +4,18 @@ import axios from 'axios'
 
 import Topbar from '../topbar'
 import Header from '../header'
+import SeatSelectionMain from './seat-selection-main'
 import Footer from '../footer'
 
-export default function SeatSelection() {
+export default function SeatSelection({ purchaseData, setPurchaseData }) {
     const { idSessao } = useParams();
     const seatSelectionDataURL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`;
     
     const [seatSelectionData, setSeatSelectionData] = useState(
         {
             movie: {},
-            day: {weekday: ''}
+            day: {weekday: ''},
+            seats: []
         }
     );
 
@@ -21,14 +23,19 @@ export default function SeatSelection() {
         const promise = axios.get(seatSelectionDataURL);
 
         promise.then(response => setSeatSelectionData(response.data))
-    }, [])    
+    }, [])
+
+    const footerData = {
+        movieData: seatSelectionData.movie,
+        weekday: seatSelectionData.day.weekday
+    }
 
     return (
         <>
             <Topbar />
             <Header text='Selecione o(s) assento(s)'/>
-            <h1>{seatSelectionData.id}</h1>
-            <Footer movieData={seatSelectionData.movie} weekday={seatSelectionData.day.weekday}/>
+            <SeatSelectionMain {...seatSelectionData} {...{purchaseData, setPurchaseData}}/>
+            <Footer {...footerData}/>
         </>
     )
-}
+}   
