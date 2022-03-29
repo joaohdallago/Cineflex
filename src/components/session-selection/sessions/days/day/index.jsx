@@ -1,18 +1,17 @@
 import styled from 'styled-components'
 
-import Showtime from './showtime';
+import Showtimes from './showtimes';
 
 export default function Day({ dayData }) {
     const { weekday, date, showtimes } = dayData;
+    const showtimeList = showtimes;
 
     return (
         <Container>
             <span>
                 {weekday} - {date}
             </span>
-            <div>
-                {showtimes.map(showtimeData => <Showtime {...{showtimeData}}/>)}
-            </div>
+            <Showtimes {...{showtimeList}}/>
         </Container>
     )
 }
@@ -27,10 +26,5 @@ const Container = styled.div`
         letter-spacing: 0.02em;
 
         color: #293845;
-    }
-
-    div {
-        display: flex;
-        gap: 9px;
     }
 `;
