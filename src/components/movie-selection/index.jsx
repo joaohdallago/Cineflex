@@ -8,7 +8,7 @@ export default function MovieSelection() {
     return (
         <>
             <Topbar />
-            <Header />
+            <Header text='Selecione o filme'/>
             <Movies />
         </>
     )

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export default function Header() {
+export default function Header({ text }) {
     return (
         <Container>
-            Selecione o Filme
+            {text}
         </Container>
     )
 }
