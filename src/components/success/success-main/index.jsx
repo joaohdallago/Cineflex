@@ -6,6 +6,10 @@ export default function SuccessMain({ purchaseDataState }) {
     const [purchaseData] = purchaseDataState
     const { bookSeatData, seatSelectionData, selectedNames } = purchaseData
 
+    const treatedSelectedNames = selectedNames.filter((name, index) => {
+        return selectedNames.indexOf(name) === index;
+    }).sort();
+
     return(
         <Container>
             <article>
@@ -23,7 +27,7 @@ export default function SuccessMain({ purchaseDataState }) {
             <article>
                 <h2>Ingressos</h2>
                 <div>
-                    {selectedNames.map(selectedName => <span>Assento {selectedName}</span>)}
+                    {treatedSelectedNames.map(selectedName => <span>Assento {selectedName}</span>)}
                 </div>
             </article>
 
