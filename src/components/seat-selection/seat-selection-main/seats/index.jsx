@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import styled from 'styled-components'
 
 import Seat from "./seat"
 import SeatsSubtitles from './seats-subtitles';
 
-export default function Seats({ seats, selectedIdsState}) {
+export default function Seats({ seats, selectedIdsState, selectedNamesState}) {
 
     return (
         <Container>
-            {seats.map(seatData => <Seat {...seatData} {...{selectedIdsState}}/>)}
+            {seats.map(seatData => <Seat {...seatData} {...{selectedIdsState, selectedNamesState}}/>)}
             <SeatsSubtitles />
         </Container>
     )

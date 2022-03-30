@@ -10,7 +10,6 @@ import Success from './components/success'
 
 function App() {
     const purchaseDataState = useState({})
-
  
     return (
         <>
@@ -20,7 +19,7 @@ function App() {
                     <Route path='/' element={<MovieSelection/>}/>
                     <Route path='/sessoes/:idFilme' element={<SessionSelection/>}/>
                     <Route path='assentos/:idSessao' element={<SeatSelection {...{purchaseDataState}}/>}/>
-                    <Route path='sucesso' element={<Success />}/>
+                    <Route path='sucesso' element={<Success {...{purchaseDataState}}/>}/>
                 </Routes>
             </BrowserRouter>
         </>

@@ -2,7 +2,7 @@ import axios from "axios";
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 
-export default function BookSeatButton({ bookSeatData, seatSelectionData, purchaseDataState }) {
+export default function BookSeatButton({ bookSeatData, seatSelectionData, selectedNames, purchaseDataState }) {
     const navigate = useNavigate();
     
     const [ purchaseData, setPurchaseData ] = purchaseDataState;
@@ -15,7 +15,8 @@ export default function BookSeatButton({ bookSeatData, seatSelectionData, purcha
         promise.then(() => {
             setPurchaseData({
                 bookSeatData,
-                seatSelectionData
+                seatSelectionData,
+                selectedNames
             })
 
             console.log(purchaseData)

@@ -1,32 +1,36 @@
 import styled from 'styled-components';
 
-export default function Seat({ id, name, isAvailable, selectedIdsState}) { 
+export default function Seat({ id, name, isAvailable, selectedIdsState, selectedNamesState}) { 
     const [selectedIds, setSelectedIds] = selectedIdsState;
+    const [selectedNames, setSelectedNames] = selectedNamesState;
     const isSelected = selectedIds.includes(id)
+
+    function selectSeat() {
+        if (!isAvailable) {
+            alert('Esse assento não está disponível')
+            return
+        }
+    
+        if (isSelected) {
+            setSelectedIds([...selectedIds.filter(item => item !== id)])
+            return
+        }
+    
+        setSelectedIds([...selectedIds, id])
+        setSelectedNames([...selectedNames, name])
+    }
     
     return (
         <Container
             {...{isAvailable, isSelected}}
-            onClick={() => selectSeat(id, isAvailable, isSelected, selectedIds, setSelectedIds)}
+            onClick={selectSeat}
         >
             {name}
         </Container>
     )
 }
 
-function selectSeat(id, isAvailable, isSelected, selectedIds, setSelectedIds) {
-    if (!isAvailable) {
-        alert('Esse assento não está disponível')
-        return
-    }
 
-    if (isSelected) {
-        setSelectedIds([...selectedIds.filter(item => item !== id)])
-        return
-    }
-
-    setSelectedIds([...selectedIds, id])
-}
 
 const selectedStyle = 'border: 1px solid #1AAE9E; background-color: #8DD7CF;'
 const availableStyle = 'border: 1px solid #7B8B99; background-color: #C3CFD9;;'

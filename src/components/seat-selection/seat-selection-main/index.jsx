@@ -7,12 +7,14 @@ import BookSeatButton from './book-seat-button';
 
 export default function SeatSelectionMain({ seatSelectionData, purchaseDataState }) {
     const selectedIdsState = useState([])
+    const selectedNamesState = useState([])
     const customerDataState = useState({
         name: '',
         cpf:''
-    })
-
+    });
+    
     const [ selectedIds ] = selectedIdsState;
+    const [ selectedNames ] = selectedNamesState;
     const [ customerData ] = customerDataState;
 
     const { seats } = seatSelectionData;
@@ -24,9 +26,9 @@ export default function SeatSelectionMain({ seatSelectionData, purchaseDataState
 
     return (
         <Container>
-            <Seats {...{seats, selectedIdsState}}/>
+            <Seats {...{seats, selectedIdsState, selectedNamesState}}/>
             <TextInputs {...{customerDataState}}/>
-            <BookSeatButton {...{bookSeatData, seatSelectionData, purchaseDataState}}/>
+            <BookSeatButton {...{bookSeatData, seatSelectionData, selectedNames, purchaseDataState}}/>
         </Container>
     )
 }
