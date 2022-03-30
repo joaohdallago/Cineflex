@@ -3,8 +3,6 @@ import Header from '../header'
 import SuccessMain from './success-main'
 
 export default function Success({ purchaseDataState }) {
-    
-
     return (
         <>
             <Topbar />

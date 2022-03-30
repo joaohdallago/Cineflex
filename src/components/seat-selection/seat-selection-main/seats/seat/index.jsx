@@ -13,6 +13,7 @@ export default function Seat({ id, name, isAvailable, selectedIdsState, selected
     
         if (isSelected) {
             setSelectedIds([...selectedIds.filter(item => item !== id)])
+            setSelectedNames([...selectedNames.filter(item => item !== name)])
             return
         }
     

@@ -58,6 +58,7 @@ const Container = styled.div`
     article {
         display: flex;
         flex-direction: column;
+        gap: 7px;
 
         line-height: 26px;
         letter-spacing: 0.04em;
