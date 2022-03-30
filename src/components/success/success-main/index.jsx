@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import BackHomeButton from "./back-home-button"
+
 export default function SuccessMain({ purchaseDataState }) {
     const [purchaseData] = purchaseDataState
     const { bookSeatData, seatSelectionData, selectedNames } = purchaseData
@@ -36,6 +38,8 @@ export default function SuccessMain({ purchaseDataState }) {
                     </span>
                 </div>
             </article>
+
+            <BackHomeButton />
         </Container>
     )
 }
